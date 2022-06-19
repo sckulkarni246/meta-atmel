@@ -1,0 +1,8 @@
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait atmel.pm_modes=standby,ulp1
+bootcmd_boot=fatload mmc 0:1 0x24000000 sama5d27_jupiter_nano.itb; bootm 0x24000000
+at91_prepare_bootargs=setenv bootargs ${bootargs}
+bootcmd=run at91_prepare_bootargs; run bootcmd_boot;
+bootdelay=1
+stderr=serial
+stdin=serial
+stdout=serial

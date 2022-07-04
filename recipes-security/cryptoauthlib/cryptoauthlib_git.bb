@@ -57,6 +57,11 @@ do_install_append_sama5d27-som1-ek-sd() {
     sed -i "s/interface = .*/interface = i2c,0xC0,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
 }
 
+# On sama5d27-jupiter-nano board, the ATECC608A has to be connected to i2c0
+do_install_append_sama5d27-jupiter-nano-sd() {
+    sed -i "s/interface = .*/interface = i2c,0xC0,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
+}
+
 # On sama5d27-wlsom1-ek board, the ATECC608A is embedded in the SOM
 do_install_append_sama5d27-wlsom1-ek-sd() {
     sed -i "s/interface = .*/interface = i2c,0x6A,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
